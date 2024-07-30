@@ -5,10 +5,13 @@
 #
 # Author: Matty < matty91 at gmail dot com >
 #
-# Current Version: 2.18
-# Last Updated: 07-Jan-2019
+# Current Version: 2.19
+# Last Updated: 30-Jul-2024
 #
 # Revision History:
+#
+#  Version 2.19
+#   Added support for .dev -- sphinxid <github.com/sphinxid>
 #
 #  Version 2.18
 #   Added support for .pro/.mx/.ro/.aero/.asia/.cc/.college domain -- Vivek Gite <github.com/nixcraft>
@@ -393,7 +396,7 @@ check_domain_status()
 
     # The whois Expiration data should resemble the following: "Expiration Date: 09-may-2008"
 
-    if [ "${TLDTYPE}" == "info" -o "${TLDTYPE}" == "org" ];
+    if [ "${TLDTYPE}" == "info" -o "${TLDTYPE}" == "org" -o "${TLDTYPE}" == "dev" ];
     then
 	    tdomdate=`cat ${WHOIS_TMP} | ${AWK} '/Expiry Date:/ { print $4 }'`
             tyear=`echo ${tdomdate} | ${CUT} -d'-' -f1`
